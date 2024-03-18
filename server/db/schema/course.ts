@@ -1,8 +1,9 @@
+import { relations } from "drizzle-orm";
 import {
-  date,
   integer,
   pgTable,
   serial,
+  text,
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
@@ -14,10 +15,16 @@ export const Courses = pgTable("courses", {
   createdBy: integer("CreatedBy")
     .notNull()
     .references(() => Authors.id),
-  description: varchar("description", { length: 256 }).notNull(),
+  description: text("description").notNull(),
   created_at: timestamp("created_at").defaultNow(),
   updated_at: timestamp("updated_at").defaultNow(),
 });
 
+export const CoursesRelation = relations(Courses, ({ one }) => ({
+  author: one(Authors, {
+    fields: [Courses.createdBy],
+    references: [Authors.id],
+  }),
+}));
 export type Course = typeof Courses.$inferSelect;
 export type NewCourse = typeof Courses.$inferInsert;

@@ -1,4 +1,6 @@
 import { drizzle } from "drizzle-orm/node-postgres";
+import * as schema from "./schema";
+
 import { Client } from "pg";
 
 export const client = new Client({
@@ -17,4 +19,7 @@ export async function connectDB() {
     console.error("Error connecting to the database: ", error);
   }
 }
-export const db = drizzle(client);
+
+export const db = drizzle(client, {
+  schema,
+});
