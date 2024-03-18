@@ -1,17 +1,44 @@
-import { Authors, NewAuthor, db } from "../../db";
+import { Authors, Files, NewAuthor, db } from "../../db";
 
 export class AuthorService {
-  getAllAuthors() {
-    return db.query.Authors.findMany();
+  static getAllAuthors() {
+    return db.query.Authors.findMany({
+      with: {
+        avatar: true,
+      },
+    });
   }
-  getAuthorById(authorId: number) {
+
+  static getAuthorById(authorId: number) {
     return db.query.Authors.findFirst({
+      with: {
+        avatar: true,
+      },
       where(author, { eq }) {
         return eq(author.id, authorId);
       },
     });
   }
-  createAuthor(author: NewAuthor) {
-    return db.insert(Authors).values(author).returning();
+
+  static async createAuthor(author: NewAuthor, file?: Express.Multer.File) {
+    if (!file) {
+      return db.insert(Authors).values(author).returning();
+    }
+    db.transaction(async (tx) => {
+      const avatar = await tx
+        .insert(Files)
+        .values({
+          mimeType: file.mimetype,
+          name: file.filename,
+          size: file.size || 0,
+          url: file.path,
+        })
+        .returning();
+
+      return tx
+        .insert(Authors)
+        .values({ ...author, FileId: avatar[0]?.id })
+        .returning();
+    });
   }
 }
