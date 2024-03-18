@@ -6,6 +6,9 @@ import bodyParser from "body-parser";
 const app = express();
 connectDB();
 const port = 3010;
+
+// TODO: Add a middleware to validate params and body.
+app.use(express.static("uploads"));
 app.use(bodyParser.json());
 app.use(morgan("tiny"));
 

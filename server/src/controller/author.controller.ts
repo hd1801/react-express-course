@@ -21,7 +21,7 @@ export async function createAuthor(req: Request, res: Response) {
   const file = req.file;
   try {
     const author = await AuthorService.createAuthor(newAuthor, file);
-    res.status(201).json(file);
+    res.status(201).json(author);
   } catch (error) {
     console.error(error);
     res.sendStatus(500);

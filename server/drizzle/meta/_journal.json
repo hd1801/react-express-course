@@ -22,6 +22,13 @@
       "when": 1710755457059,
       "tag": "0002_silent_russian",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1710778481873,
+      "tag": "0003_silly_katie_power",
+      "breakpoints": true
     }
   ]
 }

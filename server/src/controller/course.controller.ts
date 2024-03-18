@@ -49,7 +49,7 @@ export async function updateCourse(req: Request, res: Response) {
   }
 }
 
-export async function getCourseByAuthorId(req: Request, res: Response) {
+export async function getCourseByAuthorIds(req: Request, res: Response) {
   const authorIds: number[] = req.body.authorIds;
   const courses = await CourseService.getCourseByAuthors(authorIds || []);
   res.json(courses);

@@ -8,6 +8,10 @@ export class CourseService {
       where(course, { eq }) {
         return eq(course.id, courseId);
       },
+      with: {
+        author: true,
+        thumbnail: true,
+      },
     });
   }
 
@@ -15,6 +19,7 @@ export class CourseService {
     return db.query.Courses.findMany({
       with: {
         author: true,
+        thumbnail: true,
       },
     });
   }
@@ -29,6 +34,12 @@ export class CourseService {
           thumbnail: true,
         },
       });
+
+      const deletedCourse = await tx
+        .delete(Courses)
+        .where(eq(Courses.id, courseId))
+        .returning();
+
       if (course?.thumbnail) {
         try {
           await unlink(course.thumbnail.url, () => {
@@ -40,7 +51,7 @@ export class CourseService {
 
         await tx.delete(Files).where(eq(Files.id, course.thumbnail.id));
       }
-      return tx.delete(Courses).where(eq(Courses.id, courseId)).returning();
+      return deletedCourse;
     });
   }
 

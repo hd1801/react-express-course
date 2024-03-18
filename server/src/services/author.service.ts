@@ -24,7 +24,7 @@ export class AuthorService {
     if (!file) {
       return db.insert(Authors).values(author).returning();
     }
-    db.transaction(async (tx) => {
+    return db.transaction(async (tx) => {
       const avatar = await tx
         .insert(Files)
         .values({
