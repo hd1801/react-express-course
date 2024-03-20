@@ -1,18 +1,17 @@
+import { Header } from "./components";
+
 function App() {
   return (
     <div>
-      <div className="card w-96 glass">
-        <figure>
-          <img
-            src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-            alt="car!"
-          />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">Life hack</h2>
-          <p>How to park your car at your garage?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Learn now!</button>
+      <Header />
+      <div className="hero bg-base-100">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+            <h1 className="text-5xl font-bold">Explore Courses</h1>
+            <p className="py-6">
+              Choose from tons of online video courses with new additions
+              published every month
+            </p>
           </div>
         </div>
       </div>

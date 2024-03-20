@@ -10,8 +10,8 @@ authorsRouter.get("/", getAllAuthors);
 authorsRouter.get("/:authorId", getAuthorById);
 authorsRouter.post(
   "/",
-  validateMiddleware(CreateAuthorDto),
   upload.single("avatar"),
+  validateMiddleware(CreateAuthorDto),
   createAuthor
 );
 

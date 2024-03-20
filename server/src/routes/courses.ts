@@ -17,14 +17,14 @@ coursesRouter.get("/", getAllCourses);
 coursesRouter.get("/:courseId", getCourseById);
 coursesRouter.post(
   "/",
-  validateMiddleware(CreateCourseDto),
   upload.single("thumbnail"),
+  validateMiddleware(CreateCourseDto),
   createCourse
 );
 coursesRouter.put(
   "/:courseId",
-  validateMiddleware(UpdateCourseDto),
   upload.single("thumbnail"),
+  validateMiddleware(UpdateCourseDto),
   updateCourse
 );
 coursesRouter.get("/filter-by-authors", getCourseByAuthorIds);

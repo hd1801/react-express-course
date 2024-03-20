@@ -3,7 +3,7 @@ import { z } from "zod";
 export const CreateCourseDto = z.object({
   title: z.string(),
   description: z.string().optional(),
-  authorId: z.number(),
+  createdBy: z.preprocess((val) => Number(val), z.number()),
 });
 
 export const UpdateCourseDto = CreateCourseDto.partial();
