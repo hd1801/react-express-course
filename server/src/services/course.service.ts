@@ -18,7 +18,11 @@ export class CourseService {
   static getAllCourses() {
     return db.query.Courses.findMany({
       with: {
-        author: true,
+        author: {
+          with: {
+            avatar: true,
+          },
+        },
         thumbnail: true,
       },
     });
