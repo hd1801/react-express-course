@@ -1,17 +1,19 @@
 import bodyParser from "body-parser";
-import cors from 'cors';
+import cors from "cors";
 import express from "express";
 import morgan from "morgan";
+import { join } from "path";
 import { connectDB } from "../db/postgres";
 import { authorsRouter, coursesRouter } from "./routes";
 const app = express();
 connectDB();
 const port = 3010;
 
-// TODO: Add a middleware to validate params and body.
+app.use(express.static(join(__dirname, "..", "uploads")));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("uploads"));
-app.use(cors())
+console.log(join(__dirname, "..", "uploads"));
+console.log("home/hd/workspace/react-express-course/server/uploads/");
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use(morgan("tiny"));

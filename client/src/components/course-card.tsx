@@ -1,21 +1,21 @@
-function CourseCard() {
+import { Course } from "../types";
+
+interface CourseCardProps {
+  course: Course;
+}
+export function CourseCard({ course }: CourseCardProps) {
   return (
     <div className="card w-96 glass">
       <figure>
-        <img
-          src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          alt="car!"
-        />
+        <img src={course.thumbnail.url} alt="course" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">Life hack</h2>
-        <p>How to park your car at your garage?</p>
+        <h2 className="card-title">{course.title}</h2>
+        <p className="truncate line-clamp-3">{course.description}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Learn now!</button>
+          <button className="btn btn-primary">Show details!</button>
         </div>
       </div>
     </div>
   );
 }
-
-export default CourseCard;

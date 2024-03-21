@@ -1,10 +1,18 @@
-import { Header } from "./components";
+import { useQuery } from "@tanstack/react-query";
+import { getCourses } from "./api";
+import { CourseCard, Header } from "./components";
+import { Course } from "./types";
 
 function App() {
+  const { data } = useQuery({ queryKey: ["courses"], queryFn: getCourses });
+  console.log(data);
   return (
     <div>
       <Header />
-      <div className="hero bg-base-100">
+      {data?.map((course: Course) => (
+        <CourseCard course={course} />
+      ))}
+      {/* <div className="hero bg-base-100">
         <div className="hero-content text-center">
           <div className="max-w-md">
             <h1 className="text-5xl font-bold">Explore Courses</h1>
@@ -14,7 +22,7 @@ function App() {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
