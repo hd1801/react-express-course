@@ -11,8 +11,6 @@ const port = 3010;
 
 app.use(express.static(join(__dirname, "..", "uploads")));
 app.use(bodyParser.urlencoded({ extended: true }));
-console.log(join(__dirname, "..", "uploads"));
-console.log("home/hd/workspace/react-express-course/server/uploads/");
 app.use(cors());
 app.use(bodyParser.json());
 

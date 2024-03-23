@@ -9,7 +9,11 @@ export class CourseService {
         return eq(course.id, courseId);
       },
       with: {
-        author: true,
+        author: {
+          with: {
+            avatar: true,
+          },
+        },
         thumbnail: true,
       },
     });
