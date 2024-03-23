@@ -9,7 +9,8 @@ const courses = [
   },
   {
     title: "Strategic Marketing Management",
-    thumbnail: "https://unsplash.com/photos/pen-om-paper-AT77Q0Njnt0",
+    thumbnail:
+      "https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     createdBy: 7,
     description:
       "Master the principles of strategic marketing management and learn how to develop effective marketing strategies to drive business growth. This course covers market analysis, consumer behavior, branding, product development, pricing strategies, and promotional tactics. Gain practical insights and skills essential for marketing professionals and business owners.",

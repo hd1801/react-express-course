@@ -7,8 +7,8 @@ export const CourseListPage = () => {
   const { data } = useQuery({ queryKey: ["courses"], queryFn: getCourses });
   return (
     <PageWrapper>
-      <div>
-        <h1 className="text-4xl font-bold">Courses</h1>
+      <div className="flex flex-col gap-2 py-2">
+        <h1 className="text-4xl font-bold ">Courses</h1>
         <p className="text-lg font-semibold">
           Equip yourself to thrive in a tech-centric world, offering limitless
           opportunities for problem-solving and innovation.

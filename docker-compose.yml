@@ -9,11 +9,3 @@ services:
       POSTGRES_HOST: localhost
     ports:
       - 5400:5432
-
-  # server:
-  #   build: ./server
-  #   restart: always
-  #   ports:
-  #     - 5000:5000
-  #   depends_on:
-  #     - db
