@@ -25,6 +25,13 @@ cd server
 cd server && npm run dev
 ```
 
+### Add mock data
+With the server running run the following scripts ( does'nt rely on seeders uses the Rest api to create entities ).
+```bash
+node ./generate-authors.js
+node ./generate-courses.js
+```
+
 ### Client
 ```bash 
 cd client && npm i && npm run dev
